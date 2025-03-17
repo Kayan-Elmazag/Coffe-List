@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كيان المزاج - قائمة المشروبات</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;900&display=swap');
+        
+        :root {
+            --primary: #372213;
+            --secondary: #cd9b5a;
+            --accent: #8f5b24;
+            --light: #f9f4ed;
+            --text: #3a2c22;
+            --gradient-bg: linear-gradient(135deg, var(--primary) 0%, #5d3a1a 100%);
+            --gradient-item: linear-gradient(135deg, rgba(205, 155, 90, 0.1) 0%, rgba(205, 155, 90, 0.05) 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23cd9b5a' fill-opacity='0.07' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 15px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding: 20px 0;
+            overflow: hidden;
+        }
+        
+        .logo-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-bg);
+            transform: skewY(-3deg);
+            z-index: -1;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .logo-graphic {
+            width: 180px;
+            height: 180px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .logo-circle::before {
+            content: "";
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, var(--secondary) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0.3;
+        }
+        
+        .logo-icon {
+            position: relative;
+            font-size: 64px;
+            z-index: 2;
+        }
+        
+        .logo-text {
+            margin-top: 15px;
+            color: #fff;
+            text-align: center;
+            font-size: 40px;
+            font-weight: 900;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            line-height: 1.2;
+        }
+        
+        .logo-text span {
+            display: block;
+            font-size: 24px;
+            font-weight: 600;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .header h1 {
+            font-size: 42px;
+            margin: 40px 0 15px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .header h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .header p {
+            font-size: 20px;
+            color: var(--accent);
+            margin-top: 20px;
+        }
+        
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .menu-section {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .menu-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        
+        .menu-section-header {
+            background: var(--gradient-bg);
+            padding: 20px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-section-header h2 {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu-section-header h2 .icon {
+            font-size: 26px;
+            margin-left: 10px;
+            background: rgba(255,255,255,0.2);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .menu-pattern {
+            position: absolute;
+            right: -20px;
+            top: -20px;
+            font-size: 80px;
+            opacity: 0.15;
+            transform: rotate(-15deg);
+        }
+        
+        .menu-items {
+            padding: 20px 30px;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px dashed rgba(205, 155, 90, 0.3);
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateX(-5px);
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-name-container {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .item-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-item);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 12px;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .item-name {
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text);
+        }
+        
+        .item-price {
+            font-weight: 700;
+            color: #fff;
+            background: var(--accent);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .item-price::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 70px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(205, 155, 90, 0.3);
+            color: var(--accent);
+            position: relative;
+            padding-bottom: 30px;
+        }
+        
+        .footer-logo {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .footer p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .footer .social {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* The coffee cup logo animation */
+        .coffee-cup {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+        
+        .coffee-cup-body {
+            width: 50px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 0 0 15px 15px;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .coffee-cup-handle {
+            width: 16px;
+            height: 30px;
+            border: 5px solid var(--primary);
+            border-left: none;
+            border-radius: 0 20px 20px 0;
+            position: absolute;
+            right: 8px;
+            top: 15px;
+        }
+        
+        .coffee-cup-saucer {
+            width: 70px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .steam {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .steam-path {
+            width: 8px;
+            height: 0;
+            background: rgba(255,255,255,0.4);
+            border-radius: 10px;
+            animation: steam 2s infinite;
+        }
+        
+        .steam-path:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .steam-path:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .steam-path:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        @keyframes steam {
+            0% {
+                height: 0;
+                opacity: 0;
+            }
+            40% {
+                height: 15px;
+                opacity: 0.8;
+            }
+            80% {
+                height: 30px;
+                opacity: 0;
+            }
+            100% {
+                height: 0;
+                opacity: 0;
+            }
+        }
+        
+        /* Ribbon for special items */
+        .special-ribbon {
+            position: absolute;
+            top: 12px;
+            right: -10px;
+            background: var(--secondary);
+            color: #fff;
+            padding: 3px 10px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 3px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transform: rotate(3deg);
+        }
+        
+        .special-ribbon::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid var(--primary);
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+        
+        /* Wave separator */
+        .wave-separator {
+            height: 70px;
+            width: 100%;
+            position: relative;
+            margin: 40px 0;
+            overflow: hidden;
+        }
+        
+        .wave {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23cd9b5a'%3E%3C/path%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23cd9b5a'%3E%3C/path%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23cd9b5a'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+            animation: wave 25s linear infinite;
+            opacity: 0.3;
+        }
+        
+        .wave:nth-child(2) {
+            animation: wave-reverse 20s linear infinite;
+            opacity: 0.2;
+            bottom: 10px;
+        }
+        
+        @keyframes wave {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        @keyframes wave-reverse {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        
+        /* Currency symbol styles */
+        .currency {
+            font-size: 14px;
+            font-weight: 400;
+            margin-right: 2px;
+        }
+        
+        /* Category tabs for easy navigation */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .menu-tab {
+            background: var(--light);
+            color: var(--primary);
+            border: 2px solid var(--accent);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .menu-tab:hover, .menu-tab.active {
+            background: var(--accent);
+            color: #fff;
+        }
+        
+        /* Badge for new items */
+        .new-badge {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            background: #e74c3c;
+            color: #fff;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            z-index: 100;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            background: var(--accent);
+        }
+        
+        /* Responsive adjustments for mobile */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px 10px;
+            }
+            
+            .menu-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-graphic {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .logo-text {
+                font-size: 32px;
+            }
+            
+            .logo-text span {
+                font-size: 20px;
+            }
+            
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .menu-section-header h2 {
+                font-size: 24px;
+            }
+            
+            .item-name {
+                font-size: 16px;
+            }
+            
+            .menu-section {
+                margin-bottom: 0;
+            }
+
+            .menu-items {
+                padding: 15px 20px;
+            }
+            
+            .menu-section-header {
+                padding: 15px 20px;
+            }
+            
+            .menu-tab {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 375px) {
+            .logo-graphic {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .logo-text {
+                font-size: 28px;
+            }
+            
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .item-name-container {
+                width: 65%;
+            }
+            
+            .item-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+                margin-left: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <div class="logo-bg"></div>
+                <div class="logo">
+                    <div class="logo-graphic">
+                        <div class="logo-circle">
+                            <div class="coffee-cup">
+                                <div class="coffee-cup-body">
+                                    <div class="steam">
+                                        <div class="steam-path"></div>
+                                        <div class="steam-path"></div>
+                                        <div class="steam-path"></div>
+                                    </div>
+                                </div>
+                                <div class="coffee-cup-handle"></div>
+                                <div class="coffee-cup-saucer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-text">
+                        كيان المزاج
+                        <span>Kayan El Mazag</span>
+                    </div>
+                </div>
+            </div>
+            
+            <h1>قائمة المشروبات</h1>
+            <p>تمتع بلحظات استثنائية مع أشهى المشروبات والنكهات المميزة</p>
+        </div>
+        
+        <div class="menu-tabs">
+            <div class="menu-tab active" onclick="filterCategories('all')">الكل</div>
+            <div class="menu-tab" onclick="filterCategories('hot')">المشروبات الساخنة</div>
+            <div class="menu-tab" onclick="filterCategories('cold')">المشروبات الباردة</div>
+            <div class="menu-tab" onclick="filterCategories('special')">المشروبات المميزة</div>
+            <div class="menu-tab" onclick="filterCategories('hookah')">المعسل</div>
+        </div>
+        
+        <div class="menu-container">
+            <div class="menu-section" data-category="hot">
+                <div class="menu-section-header">
+                    <div class="menu-pattern">☕</div>
+                    <h2><span class="icon">☕</span> المشروبات الساخنة</h2>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍵</div>
+                            <div class="item-name">شاي أحمر</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>3</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍵</div>
+                            <div class="item-name">شاي أخضر</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>3</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🌿</div>
+                            <div class="item-name">يانسون</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>3</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🌿</div>
+                            <div class="item-name">نعناع</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>3</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🌱</div>
+                            <div class="item-name">زنجبيل</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>3</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🌺</div>
+                            <div class="item-name">كركديه</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>3</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🌿</div>
+                            <div class="item-name">قرفة</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>3</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍵</div>
+                            <div class="item-name">شاي بحليب</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>5</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">✨</div>
+                            <div class="item-name">قرفة وزنجبيل بحليب</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>5</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍋</div>
+                            <div class="item-name">ليمون سخن</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>3</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🌱</div>
+                            <div class="item-name">حلبة</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>3</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🌿</div>
+                            <div class="item-name">زنجبيل بليمون</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>5</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍵</div>
+                            <div class="item-name">شاي كرك</div>
+                            <div class="special-ribbon">مميز</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>5</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">✨</div>
+                            <div class="item-name">حمص الشام</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>7</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍃</div>
+                            <div class="item-name">عناب</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>5</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-section" data-category="hot">
+                <div class="menu-section-header">
+                    <div class="menu-pattern">☕</div>
+                    <h2><span class="icon">☕</span> القهوة</h2>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">☕</div>
+                            <div class="item-name">قهوة تركي</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>5</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">☕</div>
+                            <div class="item-name">إسبريسو</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>5</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">☕</div>
+                            <div class="item-name">إسبريسو دوبل</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>8</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">☕</div>
+                            <div class="item-name">كابتشينو</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>8</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">☕</div>
+                            <div class="item-name">لاتيه</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>8</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">☕</div>
+                            <div class="item-name">فلات وايت</div>
+                            <div class="special-ribbon">مميز</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>12</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">☕</div>
+                            <div class="item-name">قهوة فرنساوي</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>8</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">☕</div>
+                            <div class="item-name">إسبانيش لاتيه</div>
+                            <div class="new-badge">جديد</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>12</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">☕</div>
+                            <div class="item-name">بوستاشيو لاتيه</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>12</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍫</div>
+                            <div class="item-name">هوت شوكلت</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>8</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">☕</div>
+                            <div class="item-name">نسكافيه سادة</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>5</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">☕</div>
+                            <div class="item-name">نسكافيه بحليب</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>8</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">☕</div>
+                            <div class="item-name">موكا</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">☕</div>
+                            <div class="item-name">كراميل ميكاتو</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-section" data-category="hot special">
+                <div class="menu-section-header">
+                    <div class="menu-pattern">🥣</div>
+                    <h2><span class="icon">🥣</span> السحلب والمشروبات المميزة</h2>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥣</div>
+                            <div class="item-name">سحلب مكسرات</div>
+                            <div class="special-ribbon">مميز</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥣</div>
+                            <div class="item-name">سحلب فواكه</div>
+                            <div class="special-ribbon">مميز</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>12</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-section" data-category="cold">
+                <div class="menu-section-header">
+                    <div class="menu-pattern">🍹</div>
+                    <h2><span class="icon">🍹</span> العصائر الطازجة</h2>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍋</div>
+                            <div class="item-name">ليمون</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>6</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍋</div>
+                            <div class="item-name">ليمون بنعناع</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>8</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍍</div>
+                            <div class="item-name">عصير أناناس</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥭</div>
+                            <div class="item-name">مانجا</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥝</div>
+                            <div class="item-name">جوافة</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍓</div>
+                            <div class="item-name">فراولة</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍓</div>
+                            <div class="item-name">فراولة بحليب</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍌</div>
+                            <div class="item-name">موز بحليب</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥝</div>
+                            <div class="item-name">كيوي</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍊</div>
+                            <div class="item-name">برتقال</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>5</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥝</div>
+                            <div class="item-name">جوافة بحليب</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥑</div>
+                            <div class="item-name">افوكادو</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>15</div>
+                    </div>
+                    <div class="menu-item">
+    <div class="item-name-container">
+        <div class="item-icon">🍃</div>
+        <div class="item-name">عناب</div>
+    </div>
+    <div class="item-price"><span class="currency">ر.س</span>5</div>
+</div>
+                </div>
+            </div>
+            
+            <div class="menu-section" data-category="cold special">
+                <div class="menu-section-header">
+                    <div class="menu-pattern">🥤</div>
+                    <h2><span class="icon">🥤</span> المشروبات المختلطة</h2>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥤</div>
+                            <div class="item-name">اسموزي بأنواعه</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍹</div>
+                            <div class="item-name">موهيتو كودرد</div>
+                            <div class="special-ribbon">مميز</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>15</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍹</div>
+                            <div class="item-name">موهيتو سفن</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍹</div>
+                            <div class="item-name">كوكتيل فلوريدا</div>
+                            <div class="special-ribbon">مميز</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>15</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍓</div>
+                            <div class="item-name">فروت سلاط</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>15</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥛</div>
+                            <div class="item-name">زبادي خلاط</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥛</div>
+                            <div class="item-name">زبادي فواكه</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>15</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍹</div>
+                            <div class="item-name">عصير كوكتيل</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>7</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-section" data-category="cold">
+                <div class="menu-section-header">
+                    <div class="menu-pattern">🧊</div>
+                    <h2><span class="icon">🧊</span> المشروبات المثلجة</h2>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🍦</div>
+                            <div class="item-name">آيس كريم</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>12</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🧊</div>
+                            <div class="item-name">آيس موكا</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🧊</div>
+                            <div class="item-name">آيس لاتيه</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🧊</div>
+                            <div class="item-name">آيس كراميل ميكاتو</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>12</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🧊</div>
+                            <div class="item-name">آيس إسبانيش</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>12</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🧊</div>
+                            <div class="item-name">آيس بوستاشيو</div>
+                            <div class="special-ribbon">مميز</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>12</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🧊</div>
+                            <div class="item-name">آيس بلاك كوفي</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>8</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥤</div>
+                            <div class="item-name">ميلك شيك</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥤</div>
+                            <div class="item-name">أوريو شيك</div>
+                            <div class="new-badge">جديد</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>12</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-section" data-category="cold">
+                <div class="menu-section-header">
+                    <div class="menu-pattern">🥤</div>
+                    <h2><span class="icon">🥤</span> المشروبات الغازية</h2>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥤</div>
+                            <div class="item-name">مشروب غازي</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>5</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🥤</div>
+                            <div class="item-name">ريتا</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>5</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">🧴</div>
+                            <div class="item-name">مشروب شعير</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">⚡</div>
+                            <div class="item-name">كودريد طاقة</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>10</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">💧</div>
+                            <div class="item-name">مياه معدنية</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>1</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-section" data-category="hookah">
+                <div class="menu-section-header">
+                    <div class="menu-pattern">💨</div>
+                    <h2><span class="icon">💨</span> المعسل</h2>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">💨</div>
+                            <div class="item-name">معسل قص عادي</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>7</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">💨</div>
+                            <div class="item-name">معسل سلوم عادي</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>7</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name-container">
+                            <div class="item-icon">✨</div>
+                            <div class="item-name">معسل فاخر</div>
+                            <div class="special-ribbon">مميز</div>
+                        </div>
+                        <div class="item-price"><span class="currency">ر.س</span>25</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wave-separator">
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-logo">☕</div>
+            <p>كيان المزاج - متعة لا تنتهي من المذاق</p>
+            <div class="social">
+                <a href="#" class="social-icon">📱</a>
+                <a href="#" class="social-icon">📷</a>
+                <a href="#" class="social-icon">🌐</a>
+            </div>
+        </div>
+        <div class="footer">
+                <p>Created by Abdelghany 0561298045</p>
+
+
+        <div class="back-to-top" id="backToTop">↑</div>
+    </div>
+    
+    <script>
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Category filtering
+        function filterCategories(category) {
+            const menuSections = document.querySelectorAll('.menu-section');
+            const menuTabs = document.querySelectorAll('.menu-tab');
+            
+            // Update active tab
+            menuTabs.forEach(tab => {
+                if (tab.innerText.includes(category === 'all' ? 'الكل' : category === 'hot' ? 'الساخنة' : category === 'cold' ? 'الباردة' : category === 'special' ? 'المميزة' : 'المعسل')) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            // Show/hide menu sections
+            menuSections.forEach(section => {
+                const categories = section.dataset.category.split(' ');
+                
+                if (category === 'all' || categories.includes(category)) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

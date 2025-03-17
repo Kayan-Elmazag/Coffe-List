@@ -42,240 +42,62 @@
             color: #28a745;
         }
         
-        .top-right {
-            top: 0;
-            right: 0;
-        }
+        .top-right { top: 0; right: 0; }
+        .top-left { top: 0; left: 0; }
+        .bottom-right { bottom: 0; right: 0; }
+        .bottom-left { bottom: 0; left: 0; }
         
-        .top-left {
-            top: 0;
-            left: 0;
-        }
+        .header { text-align: center; margin-bottom: 20px; position: relative; }
+        h1 { color: #28a745; font-size: 20px; margin-bottom: 5px; text-align: center; }
         
-        .bottom-right {
-            bottom: 0;
-            right: 0;
-        }
+        .invoice-title { display: flex; justify-content: space-between; margin-bottom: 15px; border-bottom: 2px solid #28a745; padding-bottom: 10px; }
+        .invoice-number { font-weight: bold; color: #28a745; font-size: 14px; }
         
-        .bottom-left {
-            bottom: 0;
-            left: 0;
-        }
+        .section { margin-bottom: 15px; padding: 10px; border-radius: 5px; background-color: #f8f9fa; border: 1px solid #e9ecef; }
+        .section h2 { margin-bottom: 8px; color: #28a745; font-size: 16px; border-bottom: 1px solid #dee2e6; padding-bottom: 5px; }
         
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-        }
+        .flex-container { display: flex; gap: 15px; margin-bottom: 15px; }
+        .flex-container .section { flex: 1; padding: 8px; margin-bottom: 8px; }
         
-        h1 {
-            color: #28a745;
-            font-size: 20px;
-            margin-bottom: 5px;
-            text-align: center;
-        }
+        .field { margin-bottom: 6px; }
+        label { display: block; margin-bottom: 3px; font-weight: 500; font-size: 12px; }
         
-        .invoice-title {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #28a745;
-            padding-bottom: 10px;
-        }
+        input, textarea { width: 100%; padding: 5px; border: 1px solid #ced4da; border-radius: 4px; font-size: 12px; }
         
-        .invoice-number {
-            font-weight: bold;
-            color: #28a745;
-            font-size: 14px;
-        }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        th, td { padding: 8px 5px; text-align: right; border-bottom: 1px solid #dee2e6; font-size: 12px; }
         
-        .section {
-            margin-bottom: 15px;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-        }
+        th { background-color: #f1f8e9; color: #28a745; font-weight: 600; }
+        tfoot td { font-weight: bold; border-top: 2px solid #28a745; }
         
-        .section h2 {
-            margin-bottom: 8px;
-            color: #28a745;
-            font-size: 16px;
-            border-bottom: 1px solid #dee2e6;
-            padding-bottom: 5px;
-        }
+        .action-buttons { text-align: center; margin: 15px 0; }
+        button { padding: 6px 12px; margin: 0 5px; border: none; border-radius: 4px; cursor: pointer; font-weight: 500; transition: all 0.3s; font-size: 12px; }
         
-        .flex-container {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
+        .btn-primary { background-color: #28a745; color: white; }
+        .btn-secondary { background-color: #6c757d; color: white; }
+        .btn-danger { background-color: #dc3545; color: white; }
         
-        .flex-container .section {
-            flex: 1;
-            padding: 8px;
-            margin-bottom: 8px;
-        }
+        button:hover { opacity: 0.9; transform: translateY(-2px); }
         
-        .field {
-            margin-bottom: 6px;
-        }
+        .summary-section { display: flex; justify-content: flex-end; }
+        .summary { width: 250px; }
         
-        label {
-            display: block;
-            margin-bottom: 3px;
-            font-weight: 500;
-            font-size: 12px;
-        }
+        .summary-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #dee2e6; font-size: 12px; }
+        .summary-row:last-child { border-bottom: 2px solid #28a745; font-weight: bold; font-size: 14px; }
         
-        input, textarea {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            font-size: 12px;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
-        }
-        
-        th, td {
-            padding: 8px 5px;
-            text-align: right;
-            border-bottom: 1px solid #dee2e6;
-            font-size: 12px;
-        }
-        
-        th {
-            background-color: #f1f8e9;
-            color: #28a745;
-            font-weight: 600;
-        }
-        
-        tfoot td {
-            font-weight: bold;
-            border-top: 2px solid #28a745;
-        }
-        
-        .action-buttons {
-            text-align: center;
-            margin: 15px 0;
-        }
-        
-        button {
-            padding: 6px 12px;
-            margin: 0 5px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s;
-            font-size: 12px;
-        }
-        
-        .btn-primary {
-            background-color: #28a745;
-            color: white;
-        }
-        
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
-        }
-        
-        .btn-danger {
-            background-color: #dc3545;
-            color: white;
-        }
-        
-        button:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-        
-        .summary-section {
-            display: flex;
-            justify-content: flex-end;
-        }
-        
-        .summary {
-            width: 250px;
-        }
-        
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 6px 0;
-            border-bottom: 1px solid #dee2e6;
-            font-size: 12px;
-        }
-        
-        .summary-row:last-child {
-            border-bottom: 2px solid #28a745;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        
-        .tax-info {
-            margin-top: 15px;
-            font-size: 12px;
-            text-align: center;
-            color: #6c757d;
-        }
-        
-        .hidden-print {
-            margin-top: 15px;
-            text-align: center;
-            font-size: 10px;
-            color: #6c757d;
-        }
+        .tax-info { margin-top: 15px; font-size: 12px; text-align: center; color: #6c757d; }
+        .hidden-print { margin-top: 15px; text-align: center; font-size: 10px; color: #6c757d; }
 
         @media print {
-            body {
-                padding: 0;
-                background-color: #fff;
-            }
-            
-            .invoice-container {
-                box-shadow: none;
-                padding: 10px;
-                border: none;
-            }
-            
-            .action-buttons, .btn-add-row, .btn-remove-row, .hidden-print {
-                display: none !important;
-            }
-            
-            input, textarea {
-                border: none;
-                padding: 0;
-                font-size: 12px;
-            }
-            
-            .section {
-                border: none;
-                padding: 5px 0;
-                background-color: transparent;
-            }
-            
-            .header {
-                margin-bottom: 10px;
-            }
-            
-            .flex-container {
-                margin-bottom: 10px;
-            }
-            
-            table {
-                margin-bottom: 10px;
-            }
-            
-            th, td {
-                padding: 5px 3px;
-            }
+            body { padding: 0; background-color: #fff; }
+            .invoice-container { box-shadow: none; padding: 10px; border: none; }
+            .action-buttons, .btn-add-row, .btn-remove-row, .hidden-print { display: none !important; }
+            input, textarea { border: none; padding: 0; font-size: 12px; }
+            .section { border: none; padding: 5px 0; background-color: transparent; }
+            .header { margin-bottom: 10px; }
+            .flex-container { margin-bottom: 10px; }
+            table { margin-bottom: 10px; }
+            th, td { padding: 5px 3px; }
         }
     </style>
 </head>
@@ -289,7 +111,7 @@
         
         <!-- Header -->
         <div class="header">
-            <h1>ﻣﺆﺳﺴﺔ ﺷﻴﺨﻪ ﻋﺒﺪﺍﻟﻠﻠﻪ ﺍﻟﻨﺘﻴﻔﺎﺕ ﻟﻠﻨﻘﻠﻴﺎﺕ</h1>
+            <h1>ﻣﺆﺳﺴﺔ ﺷﻴﺨﻪ ﻋﺒﺪﺍﻟﻠﻠﻠﻪ ﺍﻟﻨﺘﻴﻔﺎﺕ ﻟﻠﻨﻘﻠﻴﺎﺕ</h1>
             <p>خدمات نقل احترافية - سرعة ودقة في التنفيذ</p>
         </div>
         
@@ -310,7 +132,7 @@
                 <h2>بيانات الشركة</h2>
                 <div class="field">
                     <label for="companyName">اسم الشركة:</label>
-                    <input type="text" id="companyName" value="ﻣؤﺳﺳﺔ ﺷيخه ﻋﺑدﷲ اﻟﻧﺗﯾﻔﺎت ﻟﻠﻧﻘﻠﯾﺎت">
+                    <input type="text" id="companyName" value="ﻣؤﺳﺳﺔ ﺷيخه ﻋﺑدﷱ اﻟﻧﺗﯾﻔﺎت ﻟﻠﻧﻘﻠﯾﺎت">
                 </div>
                 <div class="field">
                     <label for="companyTaxNumber">الرقم الضريبي:</label>
@@ -455,7 +277,14 @@
         }
 
         function printInvoice() {
+            // إخفاء العناصر غير المرغوب فيها
+            document.querySelector('.action-buttons').style.display = 'none';
+
+            // تنفيذ عملية الطباعة
             window.print();
+
+            // إعادة العناصر بعد الطباعة
+            document.querySelector('.action-buttons').style.display = 'block';
         }
 
         function exportToExcel() {
